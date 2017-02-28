@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式之入门</title>
+    <style type="text/css">
+        .reg {
+            width: 340px;
+            margin: 40px;
+            clear: both;
+        }
+
+        .tel, .tel_info, .str, .str_info {
+            float: left;
+            width: 140px;
+            margin: 10px;
+            height: 40px;
+            line-height: 40px;
+            font: 700;
+        }
+
+        .tel_info, .str_info {
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="reg">
+        <input type="text" placeholder="请输入手机号" maxlength="20" class="tel">
+        <div class="tel_info"></div>
+    </div>
+    <div class="reg">
+        <input type="text" placeholder="请输入字符串" class="str">
+        <div class="str_info"></div>
+    </div>
+    <script type="text/javascript">
+        window.onload = function(){
+            var tel = document.getElementsByClassName("tel")[0];
+            var str = document.getElementsByClassName("str")[0];
+            var tel_info = document.getElementsByClassName("tel_info")[0];
+            var str_info = document.getElementsByClassName('str_info')[0];
+            tel.onblur = function() {
+                var num = this.value;
+                var telReg = /^((13\d)|(14[579])(15[0-35-9])|(17[0-35-8])|(18\d))\d{8}$/;
+                if (telReg.test(num)) {
+                    tel_info.style.display = "block";
+                    tel_info.innerHTML = "手机号格式正确";
+                } else {
+                    tel_info.style.display = "block";
+                    tel_info.innerHTML = "手机号格式不正确";
+                }
+            }
+            str.onblur = function(){
+                var str = this.value;
+                var strReg = /\b(\w+)(\s+)(\1)\b/;
+                if (strReg.test(strReg)) {
+                    str_info.style.display = "block";
+                    str_info.innerHTML = "有相邻重复单词";
+                } else {
+                    str_info.style.display = "block";
+                    str_info.innerHTML = "无相邻重复单词";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
