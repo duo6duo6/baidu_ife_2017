@@ -1,0 +1,91 @@
+     .wrapper {
+        width: 400px;
+        margin: 0 auto;
+      }
+
+      .background-img, .pseudo-elments {
+        float: left;
+        margin: 40px 20px;
+        width: 120px;
+        height: 120px;
+        border: 5px solid green;
+        border-radius: 10px;
+      }
+
+      input {
+        display: none;
+      }
+
+      p {
+        margin: 20px;
+      }
+      /*雪碧图实现*/
+      #radio1+label, #radio2+label, #checkbox1+label, #checkbox2+label {
+        position: relative;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-left: 25px;
+        background: url(1-2bg.png);
+      }
+      /*radio*/
+      #radio1+label, #radio2+label {
+        background-position: -24px -10px;
+      }
+
+      #radio1:checked+label, #radio2:checked+label {
+        background-position: -59px -10px;
+      }
+      /*checkbox*/
+      #checkbox1+label, #checkbox2+label {
+        background-position: -24px -32px;
+      }
+
+      #checkbox1:checked+label, #checkbox2:checked+label {
+        background-position: -59px -31px;
+      }
+
+      /*伪元素实现*/
+      #radio3+label, #radio4+label, #checkbox3+label, #checkbox4+label {
+        display: inline-block;
+        position: relative;
+        width: 14px;
+        height: 14px;
+        border: 1px solid #d9d9d9;
+        margin-left: 25px;
+      }
+
+      #radio3+label, #radio4+label {
+        border-radius: 50%;
+      }
+
+      #radio3:checked+label, #radio4:checked+label, #checkbox3:checked+label, #checkbox4:checked+label {
+        border-color: red;
+      }
+
+      #radio3:checked+label::after, #radio4:checked+label::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: -4px;
+        width: 8px;
+        height: 8px;
+        background: red;
+        border-radius: 50%;
+      }
+
+      #checkbox3:checked+label::before, #checkbox4:checked+label::before {
+        margin: auto;
+        position: absolute;
+        content: '\2714';
+        color: red;
+        top: 50%;
+        left: 50%;
+        margin-left: -5px;
+        margin-top: -8px;
+        width:8px;
+        height:8px;
+        font-size: 12px;
+      }
